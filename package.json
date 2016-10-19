@@ -101,15 +101,6 @@
     "typescript": "2.0.2",
     "validate-commit-msg": "^2.6.1"
   },
-  "config": {
-    "ghooks": {
-      "pre-commit": "npm run lint && npm test",
-      "commit-msg": "validate-commit-msg"
-    },
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "babel": {
     "presets": [
       "es2015",
