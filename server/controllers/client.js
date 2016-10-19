@@ -28,6 +28,7 @@ function get(req, res) {
  * @property {string} req.body.cpf - The cpf of client.
  * @property {string} req.body.maritalStatus - The maritalStatus of client.
  * @property {string} req.body.sex - The sex of client.
+ * @property {string} req.body.address - The address of client.
  * @property {string} req.body.city - The city of client.
  * @property {string} req.body.state - The state of client.
  * @property {string} req.body.phone - The phone of client.
@@ -45,6 +46,7 @@ function create(req, res, next) {
     cpf: req.body.name,
     maritalStatus: req.body.maritalStatus,
     sex: req.body.sex,
+    address: req.body.address,
     city: req.body.name,
     state: req.body.state,
     phone: req.body.phone,
@@ -67,6 +69,7 @@ function create(req, res, next) {
  * @property {string} req.body.cpf - The cpf of client.
  * @property {string} req.body.maritalStatus - The maritalStatus of client.
  * @property {string} req.body.sex - The sex of client.
+ * @property {string} req.body.address - The address of client.
  * @property {string} req.body.city - The city of client.
  * @property {string} req.body.state - The state of client.
  * @property {string} req.body.phone - The phone of client.

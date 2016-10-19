@@ -3,16 +3,13 @@
   <div class="card-block">
         
         <div class="container">
-
             <form [formGroup]="addClientForm" (ngSubmit)="addClient()" >
-                
-              
                     <div class="form-group">
-                        <label for="first_name">Nome</label>
+                        <label for="name">Nome</label>
                         <input class="form-control" placeholder="Nome" name="name" formControlName="name" type="text" />          
                    </div>
                     <div class="form-group">
-                        <label for="last_name">Sobrenome</label>
+                        <label for="lastName">Sobrenome</label>
                         <input class="form-control" placeholder="Sobrenome" name="lastName" formControlName="lastName"  type="text" />
                     </div>
                     <div class="form-group">
@@ -23,22 +20,36 @@
                         <label for="cpf">CPF</label>
                         <input class="form-control" placeholder="CPF" name="cpf" type="text"  formControlName="cpf" />
                     </div>
+
                     <div class="form-group">
-                        <label for="marital_status">Estado Civil</label>
-                        <select class="form-control" name="marital_status" [(ngModel)]="client.marital_status">
-                             <option *ngFor="let marital_status of marital_status" [value]="marital_status">{{marital_status}}</option>
-                        </select>
+                        <label for="maritalStatus"> Estado Civil </label>
+                        <br />
+                        <label class="custom-control custom-radio">
+                            <input  class="custom-control-input" name="maritalStatus" type="radio" formControlName="maritalStatus" value="Solteiro" />
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Solteiro(a)</span>
+                        </label>
+                        <label class="custom-control custom-radio">
+                            <input  class="custom-control-input" name="maritalStatus" type="radio" formControlName="maritalStatus" value="Casado" />                          
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Casado(a)</span>
+                        </label>
+                        <label class="custom-control custom-radio">
+                            <input  class="custom-control-input" name="maritalStatus" type="radio" formControlName="maritalStatus" value="Outro" />                          
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Outro</span>
+                        </label>
                     </div>
                     <div class="form-group">
                         <label for="sex"> Sexo </label>
                         <br />
                         <label class="custom-control custom-radio">
-                            <input  class="custom-control-input" name="sex" type="radio" name="sex" value="M" />
+                            <input  class="custom-control-input" name="sex" type="radio" formControlName="sex" value="M" />
                             <span class="custom-control-indicator"></span>
                             <span class="custom-control-description">Masculino</span>
                         </label>
                         <label class="custom-control custom-radio">
-                            <input  class="custom-control-input" name="sex" type="radio" name="sex" value="F" />                          
+                            <input  class="custom-control-input" name="sex" type="radio" formControlName="sex" value="F" />                          
                             <span class="custom-control-indicator"></span>
                             <span class="custom-control-description">Feminino</span>
                         </label>
@@ -75,7 +86,7 @@
                     </div>
                     <div class="form-group">
                         <label for="comments">Observações</label>
-                        <textarea class="form-control" name="comments" [(ngModel)]="client.comments" formControlName="comments"></textarea>          
+                        <textarea class="form-control" name="comments" formControlName="comments"></textarea>          
                     </div>
                     <div class="form-group">
                         <button type="submit" name="submit" [disabled]="!addClientForm.valid" class="btn">OK</button>
