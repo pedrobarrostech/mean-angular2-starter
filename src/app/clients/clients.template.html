@@ -4,24 +4,24 @@
         
         <div class="container">
 
-            <form (ngSubmit)="onSubmit()" >
+            <form [formGroup]="addClientForm" (ngSubmit)="addClient()" >
                 
               
                     <div class="form-group">
                         <label for="first_name">Nome</label>
-                        <input class="form-control" placeholder="Nome" name="first_name" type="text" [(ngModel)]="client.name"  />          
+                        <input class="form-control" placeholder="Nome" name="name" formControlName="name" type="text" />          
                    </div>
                     <div class="form-group">
                         <label for="last_name">Sobrenome</label>
-                        <input class="form-control" placeholder="Sobrenome" name="last_name" type="text"  [(ngModel)]="client.lastName" />
+                        <input class="form-control" placeholder="Sobrenome" name="lastName" formControlName="lastName"  type="text" />
                     </div>
                     <div class="form-group">
                         <label for="rg">RG</label>
-                        <input class="form-control" placeholder="RG" name="rg" type="text" [(ngModel)]="client.rg"  />
+                        <input class="form-control" placeholder="RG" name="rg" type="text"  formControlName="rg" />
                     </div>
                     <div class="form-group">
                         <label for="cpf">CPF</label>
-                        <input class="form-control" placeholder="CPF" name="cpf" type="text" [(ngModel)]="client.rg"  />
+                        <input class="form-control" placeholder="CPF" name="cpf" type="text"  formControlName="cpf" />
                     </div>
                     <div class="form-group">
                         <label for="marital_status">Estado Civil</label>
@@ -33,12 +33,12 @@
                         <label for="sex"> Sexo </label>
                         <br />
                         <label class="custom-control custom-radio">
-                            <input  class="custom-control-input" name="sex" type="radio" name="sex-male" value="M" [(ngModel)]="client.sex"/>
+                            <input  class="custom-control-input" name="sex" type="radio" name="sex" value="M" />
                             <span class="custom-control-indicator"></span>
                             <span class="custom-control-description">Masculino</span>
                         </label>
                         <label class="custom-control custom-radio">
-                            <input  class="custom-control-input" name="sex" type="radio" name="sex-female" value="F" [(ngModel)]="client.sex" />                          
+                            <input  class="custom-control-input" name="sex" type="radio" name="sex" value="F" />                          
                             <span class="custom-control-indicator"></span>
                             <span class="custom-control-description">Feminino</span>
                         </label>
@@ -47,38 +47,38 @@
                     
                     <div class="form-group">
                         <label for="city">Cidade</label>
-                        <input class="form-control" placeholder="Cidade" name="city" type="text" [(ngModel)]="client.city" /> 
+                        <input class="form-control" placeholder="Cidade" name="city" type="text" formControlName="city" /> 
                     </div>
                     <div class="form-group">
                         <label for="address">Endereço</label>
-                        <input class="form-control" placeholder="Endereço" name="address" type="text" [(ngModel)]="client.address" />
+                        <input class="form-control" placeholder="Endereço" name="address" type="text" formControlName="address" />
                     </div>
                     <div class="form-group">
                         <label for="state">Estado</label>
-                        <input class="form-control" placeholder="Estado" name="state" type="text" [(ngModel)]="client.state" />
+                        <input class="form-control" placeholder="Estado" name="state" type="text" formControlName="state" />
                     </div>
                     <div class="form-group">
                         <label for="phone">Telefone/Celular</label>
-                        <input class="form-control" placeholder="Telefone/Celular" name="phone" type="text" [(ngModel)]="client.phone" /> 
+                        <input class="form-control" placeholder="Telefone/Celular" name="phone" type="text" formControlName="phone" /> 
                     </div>
                     <div class="form-group">
                         <label for="facebook">Facebook</label>
-                        <input class="form-control" placeholder="Facebook" name="facebook" type="text" [(ngModel)]="client.facebook" /> 
+                        <input class="form-control" placeholder="Facebook" name="facebook" type="text" formControlName="facebook" /> 
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail</label>
-                        <input class="form-control" placeholder="E-mail" name="email" type="text" [(ngModel)]="client.email" />
+                        <input class="form-control" placeholder="E-mail" name="email" type="text" formControlName="email" />
                     </div>
                     <div class="form-group">
                         <label for="birthday">Data de Nascimento</label>
-                        <input class="form-control" placeholder="Data de Nascimento" name="birthday" type="date" [(ngModel)]="client.birthday" />  
+                        <input class="form-control" placeholder="Data de Nascimento" name="birthday" formControlName="birthday" type="date" />  
                     </div>
                     <div class="form-group">
                         <label for="comments">Observações</label>
-                        <textarea class="form-control" name="comments" [(ngModel)]="client.comments" ></textarea>          
+                        <textarea class="form-control" name="comments" [(ngModel)]="client.comments" formControlName="comments"></textarea>          
                     </div>
                     <div class="form-group">
-                        <button type="submit" name="submit" class="btn">OK</button>
+                        <button type="submit" name="submit" [disabled]="!addClientForm.valid" class="btn">OK</button>
                     </div>
                 
             </form>

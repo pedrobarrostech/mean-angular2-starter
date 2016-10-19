@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ClientService{
-  url = 'api/client/';
+  url = 'api/clients/';
   constructor(private http: Http) {
   }
 
@@ -16,7 +16,7 @@ export class ClientService{
                     .catch(this.handleError);
   }
   add (client: Client): Observable<Client> {
-    let body = JSON.stringify({ client });
+    let body = JSON.stringify(client);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.url, body, options)
