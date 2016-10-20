@@ -63,7 +63,7 @@ describe('## Cat APIs', () => {
         .send(cat)
         .expect(httpStatus.OK)
         .then((res) => {
-          expect(res.body.name).to.equal('KK');
+          expect(res.body.name).to.equal('KK123');
           expect(res.body.age).to.equal(cat.age);
           expect(res.body.weight).to.equal(cat.weight);
           done();
@@ -91,7 +91,7 @@ describe('## Cat APIs', () => {
         .delete(`/api/cats/${cat._id}`)
         .expect(httpStatus.OK)
         .then((res) => {
-          expect(res.body.name).to.equal('KK');
+          expect(res.body.name).to.equal('KK123');
           expect(res.body.age).to.equal(cat.age);
           expect(res.body.weight).to.equal(cat.weight);
           done();
