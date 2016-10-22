@@ -6,7 +6,9 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ClientService{
-  url = 'api/clients/';
+  private url = 'api/clients/';
+  private headers = new Headers({ 'Content-Type': 'application/json' });
+  private options = new RequestOptions({ headers: this.headers });
   constructor(private http: Http) {
   }
 
@@ -15,31 +17,33 @@ export class ClientService{
                     .map(this.extractData)
                     .catch(this.handleError);
   }
+
   add (client: Client): Observable<Client> {
     let body = JSON.stringify(client);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.url, body, options)
+    return this.http.post(this.url, body, this.options)
                     .map(this.extractData)
                     .catch(this.handleError);
                     
   }
 
   update(client: Client) {
-    let headers = new Headers({ 'Content-Type': 'application/json' });
-    let options = new RequestOptions({ headers: headers });
     let body = JSON.stringify(client);
-    return this.http.put(this.url + client.id, body, headers).map((res: Response) => res.json());
+    return this.http.put(this.url + client._id, body, this.options)
+                    .map((res: Response) => res.json())
+                    .catch(this.handleError);
   }
 
-  remove(id) {
-    return this.http.delete(this.url + id);
+  remove(client: Client)  {
+    return this.http.delete(this.url + client._id, this.options)
+                    .catch(this.handleError);
   }
 
   private extractData(res: Response) {
     let body = res.json();
-    return body.data || { };
+    //return body.data || { };
+    return body || { };
   }
+  
   private handleError (error: any) {
     let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg); // log to console instead

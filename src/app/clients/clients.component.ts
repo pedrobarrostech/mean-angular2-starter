@@ -22,7 +22,7 @@ export class ClientsComponent implements OnInit {
   private lastName = new FormControl("", Validators.required);
   private rg = new FormControl("", Validators.required);
   private cpf = new FormControl("", Validators.required);
-  private maritalStatus = new FormControl("");
+  private maritalStatus = new FormControl("", Validators.required);
   private sex = new FormControl("", Validators.required);
   private address = new FormControl("", Validators.required);
   private city = new FormControl("", Validators.required);
@@ -58,6 +58,7 @@ export class ClientsComponent implements OnInit {
       birthday: this.birthday,
       comments: this.comments
     });
+
   }
 
   getClients() {
