@@ -5,7 +5,7 @@ export default {
   createUser: {
     body: {
       username: Joi.string().required(),
-      mobileNumber: Joi.string().regex(/^[1-9][0-9]{9}$/).required()
+      password: Joi.string().required()
     }
   },
 
@@ -13,36 +13,14 @@ export default {
   updateUser: {
     body: {
       username: Joi.string().required(),
-      mobileNumber: Joi.string().regex(/^[1-9][0-9]{9}$/).required()
+      password: Joi.string().required()
     },
     params: {
       userId: Joi.string().hex().required()
     }
   },
 
-   // POST /api/cats
-  createCat: {
-    body: {
-      name: Joi.string().required(),
-      age: Joi.number().required(),
-      weight: Joi.number().required()
-    }
-  },
-
-  // UPDATE /api/cats/:catId
-  updateCat: {
-    body: {
-      name: Joi.string().required(),
-      age: Joi.number().required(),
-      weight: Joi.number().required()
-    },
-    params: {
-      catId: Joi.string().hex().required()
-    }
-  },
-
-
-   // POST /api/clients
+  // POST /api/clients
   createClient: {
     body: {
       name: Joi.string().required(),

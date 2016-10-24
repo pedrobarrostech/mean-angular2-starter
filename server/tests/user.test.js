@@ -8,7 +8,7 @@ chai.config.includeStack = true;
 describe('## User APIs', () => {
   let user = {
     username: 'KK123',
-    mobileNumber: '1234567890'
+    password: '1234567890'
   };
 
   describe('# POST /api/users', () => {
@@ -19,7 +19,7 @@ describe('## User APIs', () => {
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.body.username).to.equal(user.username);
-          expect(res.body.mobileNumber).to.equal(user.mobileNumber);
+          expect(res.body.password).to.equal(user.password);
           user = res.body;
           done();
         })
@@ -34,7 +34,7 @@ describe('## User APIs', () => {
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.body.username).to.equal(user.username);
-          expect(res.body.mobileNumber).to.equal(user.mobileNumber);
+          expect(res.body.password).to.equal(user.password);
           done();
         })
         .catch(done);
@@ -61,7 +61,7 @@ describe('## User APIs', () => {
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.body.username).to.equal('KK');
-          expect(res.body.mobileNumber).to.equal(user.mobileNumber);
+          expect(res.body.password).to.equal(user.password);
           done();
         })
         .catch(done);
@@ -88,7 +88,7 @@ describe('## User APIs', () => {
         .expect(httpStatus.OK)
         .then((res) => {
           expect(res.body.username).to.equal('KK');
-          expect(res.body.mobileNumber).to.equal(user.mobileNumber);
+          expect(res.body.password).to.equal(user.password);
           done();
         })
         .catch(done);

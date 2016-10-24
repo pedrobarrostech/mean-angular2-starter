@@ -1,6 +1,5 @@
 import express from 'express';
 import userRoutes from './user';
-import catRoutes from './cat';
 import clientRoutes from './client';
 import authRoutes from './auth';
 
@@ -13,9 +12,6 @@ router.get('/health-check', (req, res) =>
 
 // mount user routes at /users
 router.use('/users', userRoutes);
-
-// mount user routes at /cats
-router.use('/cats', catRoutes);
 
 // mount user routes at /clients
 router.use('/clients', clientRoutes);
