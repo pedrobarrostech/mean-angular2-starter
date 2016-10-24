@@ -1,52 +1,103 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-/*
- * We're loading this component asynchronously
- * We are using some magic with es6-promise-loader that will wrap the module with a Promise
- * see https://github.com/gdi2290/es6-promise-loader for more info
- */
+import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import { FormGroup, FormControl, Validators, FormBuilder }  from '@angular/forms';
 
-console.log('`History` component loaded asynchronously');
+import { HistoryService } from '../shared/_services/history.service';
 
 @Component({
-  selector: 'history',
-  styleUrls: [ './history.style.css' ],
-  templateUrl: './history.template.html'
+  selector: 'app-history',
+  templateUrl: './history.template.html',
+  styleUrls: ['./history.style.css']
 })
-export class HistoryComponent {
-  localState;
-  constructor(public route: ActivatedRoute) {
+export class HistoryComponent implements OnInit {
 
-  }
+  private histories = [];
+  private isLoading = true;
+
+  private history = {};
+  private isEditing = false;
+
+  private addHistoryForm: FormGroup;
+  private user = new FormControl("", Validators.required);
+  private comments = new FormControl("", Validators.required);
+  
+  private infoMsg = { body: "", type: "info"};
+
+  constructor(private http: Http,
+              private _historyService: HistoryService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.route
-      .data
-      .subscribe((data: any) => {
-        // your resolved data from route
-        this.localState = data.yourData;
-      });
+    this.getHistory();
 
-    console.log('hello `History` component');
-    // static data that is bundled
-    // var mockData = require('assets/mock-data/mock-data.json');
-    // console.log('mockData', mockData);
-    // if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
-    // this.asyncDataWithWebpack();
+    this.addHistoryForm = this.formBuilder.group({
+      user: this.user,
+      comments: this.comments
+    });
+
   }
-  asyncDataWithWebpack() {
-    // you can also async load mock data with 'es6-promise-loader'
-    // you would do this if you don't want the mock-data bundled
-    // remember that 'es6-promise-loader' is a promise
-    // var asyncMockDataPromiseFactory = require('es6-promise!assets/mock-data/mock-data.json');
-    // setTimeout(() => {
-    //
-    //   let asyncDataPromise = asyncMockDataPromiseFactory();
-    //   asyncDataPromise.then(json => {
-    //     console.log('async mockData', json);
-    //   });
-    //
-    // });
+
+  getHistory() {
+    this._historyService.getAll().subscribe(
+      data => this.history = data,
+      error => console.log(error),
+      () => this.isLoading = false
+    );
+  }
+
+  addHistory() {
+    this._historyService.add(this.addHistoryForm.value).subscribe(
+      res => {
+        var newHistory = res;
+        this.histories.push(newHistory);
+        this.addHistoryForm.reset();
+        this.sendInfoMsg("item added successfully.", "success");
+      },
+      error => console.log(error)
+    );
+  }
+
+  enableEditing(history) {
+    this.isEditing = true;
+    this.history = history;
+  }
+
+  cancelEditing() {
+    this.isEditing = false;
+    this.history = {};
+    this.sendInfoMsg("item editing cancelled.", "warning");
+    // reload the history to reset the editing
+    this.getHistory();
+  }
+
+  editHistory(history) {
+    this._historyService.update(history).subscribe(
+      res => {
+        this.isEditing = false;
+        this.history = history;
+        this.sendInfoMsg("item edited successfully.", "success");
+      },
+      error => console.log(error)
+    );
+  }
+
+  deleteHistory(history) {
+    if(window.confirm("Are you sure you want to permanently delete this item?")) {
+      this._historyService.remove(history).subscribe(
+        res => {
+          var pos = this.histories.map(history => { return history._id }).indexOf(history._id);
+          this.histories.splice(pos, 1);
+          this.sendInfoMsg("item deleted successfully.", "success");
+        },
+        error => console.log(error)
+      );
+    }
+  }
+
+  sendInfoMsg(body, type, time = 3000) {
+    this.infoMsg.body = body;
+    this.infoMsg.type = type;
+    window.setTimeout(() => this.infoMsg.body = "", time);
   }
 
 }

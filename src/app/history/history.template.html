@@ -1,7 +1,17 @@
-<menu></menu>
-<main>
-    <div class="container">
-        <h1>History</h1>
-        <p>Test</p>
-    </div>
-</main>
+<div class="card">
+  <h4 class="card-header">Históricos</h4>
+  <div class="card-block">
+        
+        <div class="container">
+            <form [formGroup]="addHistoryForm" (ngSubmit)="addHistory()" >
+                    <div class="form-group">
+                        <label for="comments">Observações</label>
+                        <textarea class="form-control" name="comments" formControlName="comments"></textarea>          
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="submit" [disabled]="!addHistoryForm.valid" class="btn">OK</button>
+                    </div>
+            </form>
+        </div>
+     </div>
+</div>

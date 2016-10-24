@@ -12,7 +12,7 @@ import { LoginComponent } from './login/login.component';
 import { NoContentComponent } from './no-content/no-content.component';
 
 
-import { DataService } from './shared/_services/data.service';
+import { HistoryService } from './shared/_services/history.service';
 import { ROUTES } from './app.routes';
 import { AuthGuard } from './shared/_guards/index';
 import { AuthenticationService, ClientService } from './shared/_services/index';
@@ -35,7 +35,7 @@ import { AuthenticationService, ClientService } from './shared/_services/index';
     ROUTES
   ],
   providers: [
-    DataService,
+    HistoryService,
     ClientService,
     AuthGuard,
     AuthenticationService,
