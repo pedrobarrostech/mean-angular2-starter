@@ -36,7 +36,7 @@ export default {
       facebook:  Joi.string().required(),
       email:  Joi.string().required(),
       birthday: Joi.string().required(),
-      comments: Joi.string().required()
+      info: Joi.string().required()
     }
   },
 
@@ -56,7 +56,7 @@ export default {
       facebook:  Joi.string().required(),
       email:  Joi.string().required(),
       birthday: Joi.string().required(),
-      comments: Joi.string().required()
+      info: Joi.string().required()
     },
     params: {
       clientId: Joi.string().hex().required()

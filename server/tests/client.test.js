@@ -22,7 +22,7 @@ describe('## client APIs', () => {
     facebook: 'KK123',
     email: 'KK123',
     birthday: 'KK123',
-    comments: 'KK123'
+    info: 'KK123'
   };
 
   describe('# POST /api/clients', () => {
@@ -45,7 +45,7 @@ describe('## client APIs', () => {
           expect(res.body.facebook).to.equal(client.facebook);
           expect(res.body.email).to.equal(client.email);
           expect(res.body.birthday).to.equal(client.birthday);
-          expect(res.body.comments).to.equal(client.comments);
+          expect(res.body.info).to.equal(client.info);
           client = res.body;
           done();
         })
@@ -72,7 +72,7 @@ describe('## client APIs', () => {
           expect(res.body.facebook).to.equal(client.facebook);
           expect(res.body.email).to.equal(client.email);
           expect(res.body.birthday).to.equal(client.birthday);
-          expect(res.body.comments).to.equal(client.comments);
+          expect(res.body.info).to.equal(client.info);
           done();
         })
         .catch(done);
@@ -111,7 +111,7 @@ describe('## client APIs', () => {
           expect(res.body.facebook).to.equal(client.facebook);
           expect(res.body.email).to.equal(client.email);
           expect(res.body.birthday).to.equal(client.birthday);
-          expect(res.body.comments).to.equal(client.comments);
+          expect(res.body.info).to.equal(client.info);
           done();
         })
         .catch(done);
@@ -150,7 +150,7 @@ describe('## client APIs', () => {
           expect(res.body.facebook).to.equal(client.facebook);
           expect(res.body.email).to.equal(client.email);
           expect(res.body.birthday).to.equal(client.birthday);
-          expect(res.body.comments).to.equal(client.comments);
+          expect(res.body.info).to.equal(client.info);
           done();
         })
         .catch(done);

@@ -84,8 +84,8 @@
                         <input class="form-control" placeholder="Data de Nascimento" name="birthday" formControlName="birthday" type="date" />  
                     </div>
                     <div class="form-group">
-                        <label for="comments">Observações</label>
-                        <textarea class="form-control" name="comments" formControlName="comments"></textarea>          
+                        <label for="info">Observações</label>
+                        <textarea class="form-control" name="info" formControlName="info"></textarea>          
                     </div>
                     <div class="form-group">
                         <button type="submit" name="submit" [disabled]="!addClientForm.valid" class="btn">OK</button>
@@ -211,15 +211,16 @@
                     <input class="form-control" placeholder="Data de Nascimento" name="birthday" type="date" [(ngModel)]="client.birthday" />  
                 </div>
                 <div class="form-group">
-                    <label for="comments">Observações</label>
-                    <textarea class="form-control" name="comments" [(ngModel)]="client.comments" ></textarea>          
+                    <label for="info">Observações</label>
+                    <textarea class="form-control" name="info" [(ngModel)]="client.info" ></textarea>          
                 </div>
                     
                 <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid">
                     <i class="fa fa-floppy-o"></i> Save
                 </button>
-                <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
+               
             </form>
+            <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
             
           </td>
         </tr>

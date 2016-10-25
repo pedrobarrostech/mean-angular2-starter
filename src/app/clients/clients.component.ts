@@ -31,7 +31,7 @@ export class ClientsComponent implements OnInit {
   private facebook = new FormControl("", Validators.required);
   private email = new FormControl("", Validators.required);
   private birthday = new FormControl("", Validators.required);
-  private comments = new FormControl("", Validators.required);
+  private info = new FormControl("", Validators.required);
   
   private infoMsg = { body: "", type: "info"};
 
@@ -56,7 +56,7 @@ export class ClientsComponent implements OnInit {
       facebook: this.facebook,
       email: this.email,
       birthday: this.birthday,
-      comments: this.comments
+      info: this.info
     });
 
   }

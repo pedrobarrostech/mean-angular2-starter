@@ -59,10 +59,14 @@ const ClientSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  comments: {
+  info: {
     type: String,
     required: true
   },
+  comments: [{
+    description: { type : String, default : '' },
+    createdAt: { type : Date, default : Date.now }
+  }],
   createdAt: {
     type: Date,
     default: Date.now
@@ -80,6 +84,38 @@ const ClientSchema = new mongoose.Schema({
  * Methods
  */
 ClientSchema.method({
+
+  /**
+   * Add comment
+   *
+   * @param {User} user
+   * @param {Object} comment
+   * @api private
+   */
+  addComment: function (user, comment) {
+    this.comments.push({
+      description: comment.description
+    });
+
+    return this.save();
+  },
+
+  /**
+   * Remove comment
+   *
+   * @param {commentId} String
+   * @api private
+   */
+  removeComment: function (commentId) {
+    const index = this.comments
+      .map(comment => comment.id)
+      .indexOf(commentId);
+
+    if (~index) this.comments.splice(index, 1);
+    else throw new Error('Comment not found');
+    return this.save();
+  }
+
 });
 
 /**

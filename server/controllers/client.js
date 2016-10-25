@@ -35,7 +35,7 @@ function get(req, res) {
  * @property {string} req.body.facebook - The facebook of client.
  * @property {string} req.body.email - The email of client.
  * @property {string} req.body.birthday - The birthday of client.
- * @property {string} req.body.comments - The birthday of comments.
+ * @property {string} req.body.info - The info of client.
  * @returns {Client}
  */
 function create(req, res, next) {
@@ -53,7 +53,7 @@ function create(req, res, next) {
     facebook: req.body.facebook,
     email: req.body.email,
     birthday: req.body.birthday,
-    comments: req.body.comments
+    info: req.body.info
   });
 
   client.save()
@@ -76,7 +76,7 @@ function create(req, res, next) {
  * @property {string} req.body.facebook - The facebook of client.
  * @property {string} req.body.email - The email of client.
  * @property {string} req.body.birthday - The birthday of client.
- * @property {string} req.body.comments - The birthday of comments.
+ * @property {string} req.body.info - The info of client.
  * @returns {Client}
  */
 function update(req, res, next) {
@@ -93,7 +93,7 @@ function update(req, res, next) {
     client.facebook = req.body.facebook;
     client.email = req.body.email;
     client.birthday = req.body.birthday;
-    client.comments = req.body.comments;
+    client.info = req.body.info;
 
     client.save()
         .then(savedClient => res.json(savedClient))
