@@ -2,6 +2,7 @@ import express from 'express';
 import validate from 'express-validation';
 import paramValidation from '../../config/param-validation';
 import clientCtrl from '../controllers/client';
+import commentCtrl from '../controllers/comment';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -21,6 +22,17 @@ router.route('/:clientId')
 
   /** DELETE /api/clients/:clientId - Delete client */
   .delete(clientCtrl.remove);
+
+
+
+router.route('/:clientId/comments')
+  .post(commentCtrl.create)
+
+  .get(commentCtrl.get);
+/*
+router.route('/:userId/comments/:commentId')  
+  .delete(commentCtrl.destroy);*/
+
 
 /** Load client when API with clientId route parameter is hit */
 router.param('clientId', clientCtrl.load);

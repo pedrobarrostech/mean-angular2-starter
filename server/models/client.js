@@ -64,7 +64,7 @@ const ClientSchema = new mongoose.Schema({
     required: true
   },
   comments: [{
-    description: { type : String, default : '' },
+    description: { type : String },
     createdAt: { type : Date, default : Date.now }
   }],
   createdAt: {

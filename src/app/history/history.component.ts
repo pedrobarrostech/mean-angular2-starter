@@ -18,8 +18,7 @@ export class HistoryComponent implements OnInit {
   private isEditing = false;
 
   private addHistoryForm: FormGroup;
-  private user = new FormControl("", Validators.required);
-  private comments = new FormControl("", Validators.required);
+  private info = new FormControl("", Validators.required);
   
   private infoMsg = { body: "", type: "info"};
 
@@ -31,8 +30,7 @@ export class HistoryComponent implements OnInit {
     this.getHistory();
 
     this.addHistoryForm = this.formBuilder.group({
-      user: this.user,
-      comments: this.comments
+      info: this.info
     });
 
   }
