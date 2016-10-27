@@ -26,12 +26,12 @@ router.route('/:clientId')
 
 
 router.route('/:clientId/comments')
-  .post(commentCtrl.create)
+  .post(validate(paramValidation.createComment), commentCtrl.create)
 
   .get(commentCtrl.get);
-/*
-router.route('/:userId/comments/:commentId')  
-  .delete(commentCtrl.destroy);*/
+
+router.route('/:clientId/comments/:commentId')  
+  .delete(commentCtrl.remove);
 
 
 /** Load client when API with clientId route parameter is hit */

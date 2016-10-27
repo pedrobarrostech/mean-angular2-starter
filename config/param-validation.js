@@ -9,6 +9,12 @@ export default {
     }
   },
 
+  createComment: {
+    body: {
+      description: Joi.string().required()
+    }
+  },
+
   // UPDATE /api/users/:userId
   updateUser: {
     body: {

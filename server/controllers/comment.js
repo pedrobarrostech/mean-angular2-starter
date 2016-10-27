@@ -1,4 +1,4 @@
-//import Client from '../models/client';
+import Client from '../models/client';
 /**
  * Load client and append to req.
  */
@@ -17,25 +17,22 @@ function create(req, res, next) {
   };
 
   client.comments.push(comment);
-  
   client.save()
     .then(savedClient => res.json(savedClient))
     .catch(e => next(e));
-/*
-  client.addComment(req.body)
-    .then(savedClient => res.json(savedClient))
-    .catch(e => next(e));*/
 }
 
 /**
  * Delete comment.
- * @returns {Comment}
+ * @returns {Client}
  */
 function remove(req, res, next) {
   const client = req.client;
-  client.delete(req.params.commentId)
-    .then(deletedClient => res.json(deletedClient))
+  client.comments.pull({ _id: req.params.commentId });
+  client.save()
+    .then(savedClient => res.json(savedClient))
     .catch(e => next(e));
+
 }
 
 export default { get, create, remove };
