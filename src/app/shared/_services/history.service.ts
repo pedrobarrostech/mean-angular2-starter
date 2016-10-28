@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class HistoryService{
-  private url = 'api/histories/';
+  private url = 'api/clients/5813d3c3c796db10e92c830f/comments/';
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private options = new RequestOptions({ headers: this.headers });
   constructor(private http: Http) {

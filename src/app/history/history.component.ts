@@ -18,7 +18,7 @@ export class HistoryComponent implements OnInit {
   private isEditing = false;
 
   private addHistoryForm: FormGroup;
-  private info = new FormControl("", Validators.required);
+  private description = new FormControl("", Validators.required);
   
   private infoMsg = { body: "", type: "info"};
 
@@ -28,22 +28,22 @@ export class HistoryComponent implements OnInit {
 
   ngOnInit() {
     this.getHistory();
-
     this.addHistoryForm = this.formBuilder.group({
-      info: this.info
+      description: this.description
     });
 
   }
 
   getHistory() {
     this._historyService.getAll().subscribe(
-      data => this.history = data,
+      data => this.histories = data,
       error => console.log(error),
       () => this.isLoading = false
     );
   }
 
   addHistory() {
+    
     this._historyService.add(this.addHistoryForm.value).subscribe(
       res => {
         var newHistory = res;
@@ -66,17 +66,6 @@ export class HistoryComponent implements OnInit {
     this.sendInfoMsg("item editing cancelled.", "warning");
     // reload the history to reset the editing
     this.getHistory();
-  }
-
-  editHistory(history) {
-    this._historyService.update(history).subscribe(
-      res => {
-        this.isEditing = false;
-        this.history = history;
-        this.sendInfoMsg("item edited successfully.", "success");
-      },
-      error => console.log(error)
-    );
   }
 
   deleteHistory(history) {
