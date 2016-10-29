@@ -1,18 +1,20 @@
 <div class="card">  
     
-    <h4 class="card-header">Visitas</h4>
+    <h4 class="card-header">Adicionar visita</h4>
 
-    <form [formGroup]="addHistoryForm" (ngSubmit)="addHistory(history)">
-        <div class="form-group">
-            <label for="info">Observações</label>
-            <textarea class="form-control" name="description" formControlName="description" ></textarea>          
-        </div>
-            
-        <button class="btn btn-sm btn-primary" type="submit" [disabled]="!addHistoryForm.valid" >
-            <i class="fa fa-floppy-o"></i> Salvar
-        </button>
-    </form>
-    <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
+      <div class="card-block">
+        <form [formGroup]="addHistoryForm" (ngSubmit)="addHistory(history)">
+            <div class="form-group">
+                <label for="info">Observações</label>
+                <textarea class="form-control" name="description" formControlName="description" ></textarea>          
+            </div>
+                
+            <button class="btn btn-sm btn-primary" type="submit" [disabled]="!addHistoryForm.valid" >
+                <i class="fa fa-floppy-o"></i> Salvar
+            </button>
+        </form>
+      </div>
+ </div>  
 
 
 <div class="card" *ngIf="!isLoading">

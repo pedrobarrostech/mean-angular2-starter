@@ -1,5 +1,5 @@
 <div class="card">
-  <h4 class="card-header">Clientes</h4>
+  <h4 class="card-header">Adicionar cliente</h4>
   <div class="card-block">
         
         <div class="container">
@@ -97,7 +97,7 @@
 
 
 <div class="card" *ngIf="!isLoading">
-  <h4 class="card-header">Current clients ({{clients.length}})</h4>
+  <h4 class="card-header">Clientes ({{clients.length}})</h4>
   <div class="card-block">
     <table class="table table-bordered table-striped">
       <thead class="thead-default">
@@ -124,6 +124,9 @@
             </button> 
             <button class="btn btn-sm btn-danger" (click)="deleteClient(client)">
                 <i class="fa fa-trash"></i> Delete
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="deleteClient(client)">
+                <i class="fa fa-trash"></i> Adicionar Visita
             </button>
           </td>
         </tr>  
@@ -216,11 +219,11 @@
                 </div>
                     
                 <button class="btn btn-sm btn-primary" type="submit" [disabled]="!form.form.valid">
-                    <i class="fa fa-floppy-o"></i> Save
+                    <i class="fa fa-floppy-o"></i> Salvar
                 </button>
                
             </form>
-            <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancel</button>
+            <button class="btn btn-sm btn-warning" (click)="cancelEditing()"><i class="fa fa-times"></i> Cancelar</button>
             
           </td>
         </tr>

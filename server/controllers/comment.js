@@ -18,7 +18,7 @@ function create(req, res, next) {
 
   client.comments.push(comment);
   client.save()
-    .then(savedClient => res.json(savedClient))
+    .then(savedClient => res.json(savedClient.comments.pop()))
     .catch(e => next(e));
 }
 
