@@ -1,40 +1,40 @@
 import { Injectable } from '@angular/core';
-import { History } from '../_models/history';
+import { Visit } from '../_models/visit';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class HistoryService{
-  private url = 'api/clients/5813d3c3c796db10e92c830f/comments/';
+export class VisitService{
+  private url = 'api/clients/';
   private headers = new Headers({ 'Content-Type': 'application/json' });
   private options = new RequestOptions({ headers: this.headers });
   constructor(private http: Http) {
   }
 
-  getAll (): Observable<History[]> {
-    return this.http.get(this.url)
+  getVisitsByClient (clientId): Observable<Visit[]> {
+    return this.http.get(this.url + clientId + '/comments')
                     .map(this.extractData)
                     .catch(this.handleError);
   }
 
-  add (history: History): Observable<History> {
-    let body = JSON.stringify(history);
-    return this.http.post(this.url, body, this.options)
+  add (clientId, visit: Visit): Observable<Visit> {
+    let body = JSON.stringify(visit);
+    return this.http.post(this.url + clientId + '/comments', body, this.options)
                     .map(this.extractData)
                     .catch(this.handleError);
                     
   }
 
-  update(history: History) {
-    let body = JSON.stringify(history);
-    return this.http.put(this.url + history._id, body, this.options)
+  update(clientId, visit: Visit) {
+    let body = JSON.stringify(visit);
+    return this.http.put(this.url + clientId + '/comments/' + visit._id, body, this.options)
                     .map((res: Response) => res.json())
                     .catch(this.handleError);
   }
 
-  remove(history: History)  {
-    return this.http.delete(this.url + history._id, this.options)
+  remove(clientId, visit: Visit)  {
+    return this.http.delete(this.url + clientId + '/comments/' + visit._id, this.options)
                     .catch(this.handleError);
   }
 

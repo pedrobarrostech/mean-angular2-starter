@@ -1,4 +1,4 @@
-export class History {
+export class Visit {
 
   constructor(
     public _id?: number,

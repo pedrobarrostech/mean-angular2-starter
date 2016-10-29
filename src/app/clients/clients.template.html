@@ -120,13 +120,13 @@
           <td>{{client.rg}}</td>
           <td>
             <button class="btn btn-sm btn-warning" (click)="enableEditing(client)">
-                <i class="fa fa-pencil"></i> Edit
+                <i class="fa fa-pencil"></i> Editar
             </button> 
             <button class="btn btn-sm btn-danger" (click)="deleteClient(client)">
-                <i class="fa fa-trash"></i> Delete
+                <i class="fa fa-trash"></i> Deletar
             </button>
-            <button class="btn btn-sm btn-danger" (click)="deleteClient(client)">
-                <i class="fa fa-trash"></i> Adicionar Visita
+            <button class="btn btn-sm btn-success" [routerLink]="['/visitas', {clientId: client._id}]" >
+                <i class="fa fa-info"></i> Adicionar Visita
             </button>
           </td>
         </tr>  

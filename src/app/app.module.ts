@@ -7,12 +7,12 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ClientsComponent } from './clients/clients.component';
-import { HistoryComponent } from './history/history.component';
+import { VisitComponent } from './visit/visit.component';
 import { LoginComponent } from './login/login.component';
 import { NoContentComponent } from './no-content/no-content.component';
 
 
-import { HistoryService } from './shared/_services/history.service';
+import { VisitService } from './shared/_services/visit.service';
 import { ROUTES } from './app.routes';
 import { AuthGuard } from './shared/_guards/index';
 import { AuthenticationService, ClientService } from './shared/_services/index';
@@ -24,7 +24,7 @@ import { AuthenticationService, ClientService } from './shared/_services/index';
     HomeComponent,
     LoginComponent,
     ClientsComponent,
-    HistoryComponent,
+    VisitComponent,
     NoContentComponent
   ],
   imports: [
@@ -35,7 +35,7 @@ import { AuthenticationService, ClientService } from './shared/_services/index';
     ROUTES
   ],
   providers: [
-    HistoryService,
+    VisitService,
     ClientService,
     AuthGuard,
     AuthenticationService,

@@ -7,7 +7,7 @@ import {
 } from '@angular/core/testing';
 
 // Load the implementations that should be tested
-import { HistoryComponent } from './history.component';
+import { VisitComponent } from './visit.component';
 
 describe('Clients', () => {
   // provide our implementations or mocks to the dependency injector
@@ -21,10 +21,10 @@ describe('Clients', () => {
         }
       }
     },
-    HistoryComponent
+    VisitComponent
   ]));
 
-  it('should log ngOnInit', inject([ HistoryComponent ], (clients) => {
+  it('should log ngOnInit', inject([ VisitComponent ], (clients) => {
     spyOn(console, 'log');
     expect(console.log).not.toHaveBeenCalled();
 
