@@ -1,2 +1,2 @@
-# MEA2N starter
+# MongoDB + Express + Angular2 + Node starter
 
