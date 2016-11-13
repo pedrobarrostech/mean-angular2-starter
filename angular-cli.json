@@ -1,7 +1,7 @@
 {
   "project": {
     "version": "1.0.0-beta.16",
-    "name": "angular2-full-stack"
+    "name": "mean-angular2-starter"
   },
   "apps": [
     {
